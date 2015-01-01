@@ -1,31 +1,28 @@
 package netpool.lab.barracks.netpool;
 
-import android.app.ExpandableListActivity;
-import android.database.DataSetObserver;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
+import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
 
-
+    private ArrayList<Date> dateHeaders;
+    private HashMap<Date,ArrayList<Sessions>> dateContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +33,18 @@ public class MainActivity extends ActionBarActivity {
         Parse.initialize(this, "myewFjcTkVOAXj4lCO24ttvyUEAxpYC94U9wuCS1", "wGqCAQRtoXIueawV6vjE6nQwXChj1V3Vy6VaXroI");
         ParseObject.registerSubclass(Sessions.class);
 
-        DataHelper dataHelper = new DataHelper();
-
+        //sessionHeaderFetch();
+         DataHelper dataHelper = new DataHelper();
+        dateHeaders = dataHelper.getAllDateHeaders();
+        dateContent = dataHelper.getAllListDate();
+        //dataHelper.getAllDateHeaders();
         ExpandableListView expView = (ExpandableListView)findViewById(R.id.expandableListView);
-        SessionListAdapter adapter = new SessionListAdapter(this,dataHelper.getAllDateHeaders(),dataHelper.getAllListDate());
+        SessionListAdapter adapter = new SessionListAdapter(this,dateHeaders,dateContent);
 
         expView.setAdapter(adapter);
 
     }
+
 
 
     @Override

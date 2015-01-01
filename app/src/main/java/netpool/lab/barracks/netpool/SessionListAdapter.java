@@ -7,13 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import com.facebook.Session;
-
-import org.w3c.dom.Text;
-
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by Bala on 30/12/2014.
@@ -21,10 +17,10 @@ import java.util.List;
 public class SessionListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
-    private List<Date> sessionHeaders;
-    private HashMap<Date,List<Sessions>> sessionData;
+    private ArrayList<Date> sessionHeaders;
+    private HashMap<Date,ArrayList<Sessions>> sessionData;
 
-    public SessionListAdapter(Context context, List<Date> sessionHeaders, HashMap<Date, List<Sessions>> sessionData) {
+    public SessionListAdapter(Context context, ArrayList<Date> sessionHeaders, HashMap<Date, ArrayList<Sessions>> sessionData) {
         this.context = context;
         this.sessionHeaders = sessionHeaders;
         this.sessionData = sessionData;
