@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppTheme.Base"> </style>
+
+
+        <!-- your theme inherits from the material theme -->
+        <style name="AppTheme.Base" parent="Theme.AppCompat">
+            <!-- theme customizations -->
+            <item name="colorPrimary">@color/blue_500</item>
+            <item name="colorPrimaryDark">@color/blue_700</item>
+            <item name="colorAccent">@color/green_A200</item>
+        </style>
+
+
+
+</resources>
